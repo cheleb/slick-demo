@@ -27,7 +27,7 @@ trait Tables {
    *  @param city Database column city SqlType(text)
    *  @param country Database column country SqlType(text)
    *  @param state Database column state SqlType(text), Default(None) */
-  case class AddressRow(id: java.util.UUID, street1: String, street2: Option[String] = None, street3: Option[String] = None, zip: String, city: String, country: String, state: Option[String] = None)
+  final case class AddressRow(id: java.util.UUID, street1: String, street2: Option[String] = None, street3: Option[String] = None, zip: String, city: String, country: String, state: Option[String] = None)
   /** GetResult implicit for fetching AddressRow objects using plain SQL queries */
   implicit def GetResultAddressRow(implicit e0: GR[java.util.UUID], e1: GR[String], e2: GR[Option[String]]): GR[AddressRow] = GR{
     prs => import prs._
@@ -66,7 +66,7 @@ trait Tables {
    *  @param firstname Database column firstname SqlType(text)
    *  @param birthDate Database column birth_date SqlType(date), Default(None)
    *  @param addressId Database column address_id SqlType(uuid), Default(None) */
-  case class PersonRow(id: java.util.UUID, title: String, lastname: String, firstname: String, birthDate: Option[java.sql.Date] = None, addressId: Option[java.util.UUID] = None)
+  final case class PersonRow(id: java.util.UUID, title: String, lastname: String, firstname: String, birthDate: Option[java.sql.Date] = None, addressId: Option[java.util.UUID] = None)
   /** GetResult implicit for fetching PersonRow objects using plain SQL queries */
   implicit def GetResultPersonRow(implicit e0: GR[java.util.UUID], e1: GR[String], e2: GR[Option[java.sql.Date]], e3: GR[Option[java.util.UUID]]): GR[PersonRow] = GR{
     prs => import prs._
