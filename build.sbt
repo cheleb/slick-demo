@@ -3,6 +3,8 @@ scalaVersion := "2.12.1"
 
 val slickVersion = "3.2.0"
 
+slickCodegenConf := "slickdemo"
+
 libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick" % slickVersion,
   "org.slf4j" % "slf4j-nop" % "1.6.4",
