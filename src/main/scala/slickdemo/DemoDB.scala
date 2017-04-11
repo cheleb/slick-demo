@@ -8,7 +8,7 @@ import slick.jdbc.PostgresProfile.api._
 import slickdemo.model.Tables
 import slickdemo.model.Tables._
 
-import scala.concurrent.Await
+import scala.concurrent.{Await, Future}
 import scala.concurrent.duration.DurationInt
 import scala.language.postfixOps
 
@@ -38,7 +38,7 @@ object DemoDB extends App {
     addressId = Some(UUID.fromString("ecdc1828-b662-4ade-9719-e96ab91f75db"))
   )), 2 seconds)
 
-  println("All Adresses:")
+  println("All Addresses:")
 
   val done1 = db.run(Address.result).map(_.foreach {
     case row => println(row)
@@ -59,7 +59,6 @@ object DemoDB extends App {
   }
 
   Await.ready(done2, 2 seconds)
-
 
 
 }

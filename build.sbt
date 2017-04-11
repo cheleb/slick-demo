@@ -1,3 +1,4 @@
+enablePlugins(SlickCodegenPlugin)
 scalaVersion := "2.12.1"
 
 val slickVersion = "3.2.0"
