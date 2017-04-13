@@ -3,6 +3,8 @@ package slickdemo
 import java.sql.Date
 import java.util.UUID
 
+import org.slf4j.LoggerFactory
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import slick.jdbc.PostgresProfile.api._
 import slickdemo.model.Tables
@@ -14,6 +16,8 @@ import scala.language.postfixOps
 
 
 object DemoDB extends App {
+
+  val log = LoggerFactory.getLogger("test")
 
   val db = Database.forConfig("slickdemo")
 
@@ -38,10 +42,10 @@ object DemoDB extends App {
     addressId = Some(UUID.fromString("ecdc1828-b662-4ade-9719-e96ab91f75db"))
   )), 2 seconds)
 
-  println("All Addresses:")
+  log.info("All Addresses:")
 
   val done1 = db.run(Address.result).map(_.foreach {
-    case row => println(row)
+    case row => log.info(row.toString)
   })
 
   Await.ready(done1, 2 seconds)
@@ -51,11 +55,11 @@ object DemoDB extends App {
     person <- Person if addresses.id === person.addressId
   } yield (addresses, person.lastname)
 
-  println("Adresses with inhabitants:")
+  log.info("Addresses with inhabitants:")
 
   val done2 = db.stream(query.result).foreach {
     address =>
-      println(address)
+      log.info(address.toString())
   }
 
   Await.ready(done2, 2 seconds)
