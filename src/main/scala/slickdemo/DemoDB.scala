@@ -10,7 +10,7 @@ import slick.jdbc.PostgresProfile.api._
 import slickdemo.model.Tables
 import slickdemo.model.Tables._
 
-import scala.concurrent.{Await, Future}
+import scala.concurrent.Await
 import scala.concurrent.duration.DurationInt
 import scala.language.postfixOps
 
