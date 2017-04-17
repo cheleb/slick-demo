@@ -1,4 +1,8 @@
 target/
+
 .idea/
+
+.ensime
+.ensime_cache/
 *~
 slick-demo.log
