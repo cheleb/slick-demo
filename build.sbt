@@ -1,8 +1,10 @@
-scalaVersion := "2.12.1"
+scalaVersion := "2.12.2"
 
 val slickVersion = "3.2.0"
 
 //slickCodegenConfFile := "src/main/slick/slick-codegen.conf"
+
+slickOutputDir := (sourceManaged in Compile).value
 
 libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick" % slickVersion,
