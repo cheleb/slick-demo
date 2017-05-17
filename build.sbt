@@ -1,7 +1,10 @@
 scalaVersion := "2.12.2"
 
-val slickVersion = "3.2.0"
+name := "slick-demo"
 
+val slickVersion = "3.2.0"
+slickOutputDir := (sourceManaged in Compile).value
+sourceGenerators in Compile += SlickCodegenPlugin.sourcesGenerator
 //slickCodegenConfFile := "src/main/slick/slick-codegen.conf"
 
 slickOutputDir := (sourceManaged in Compile).value
