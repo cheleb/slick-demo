@@ -3,6 +3,7 @@ package slickdemo
 import java.sql.Date
 import java.util.UUID
 
+import akka.stream.alpakka.slick.scaladsl.Slick
 import org.slf4j.LoggerFactory
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -64,5 +65,17 @@ object DemoDB extends App {
 
   Await.ready(done2, 2 seconds)
 
+  case class P(name: String)
+
+  import akka.stream.alpakka.slick.scaladsl._
+  implicit val session = SlickSession.forConfig("slickdemp")
+
+
+
+  Slick.sink{
+    p: P =>
+      sqlu"insert into "
+
+  }
 
 }
