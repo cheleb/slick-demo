@@ -6,3 +6,4 @@ target/
 .ensime_cache/
 *~
 slick-demo.log
+*.log
