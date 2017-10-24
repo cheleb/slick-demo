@@ -39,8 +39,8 @@ object DemoDB extends App {
     title = "Mme",
     lastname = "Meresse",
     firstname = "Agnès",
-    birthDate = Some(new Date(1974,1,15)),
-    addressId = Some(UUID.fromString("ecdc1828-b662-4ade-9719-e96ab91f75db"))
+    birthdate = Some(new Date(1974,1,15)),
+    addressid = Some(UUID.fromString("ecdc1828-b662-4ade-9719-e96ab91f75db"))
   )), 2 seconds)
 
   log.info("All Addresses:")
@@ -53,7 +53,7 @@ object DemoDB extends App {
 
   val query = for {
     addresses <- Address
-    person <- Person if addresses.id === person.addressId
+    person <- Person if addresses.id === person.addressid
   } yield (addresses, person.lastname)
 
   log.info("Addresses with inhabitants:")
@@ -65,17 +65,9 @@ object DemoDB extends App {
 
   Await.ready(done2, 2 seconds)
 
-  case class P(name: String)
-
-  import akka.stream.alpakka.slick.scaladsl._
-  implicit val session = SlickSession.forConfig("slickdemp")
 
 
 
-  Slick.sink{
-    p: P =>
-      sqlu"insert into "
 
-  }
 
 }
